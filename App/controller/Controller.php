@@ -9,8 +9,9 @@ class Controller
         if (isset($_GET['controller'])) {
             switch ($_GET['controller']) {
                 case 'page':
-                    //charger controller page
-                    var_dump('On charge PageController');
+                    //charger controleur page
+                    $pageController = new PageController();
+                    $pageController->route();
                     break;
                 case 'book':
                     //charger controller book
@@ -23,5 +24,21 @@ class Controller
         } else {
             //Charger la page d'accueil
         }
+    }
+    protected function render(string $path, array $params = []): void
+    {
+        $filePath = _ROOTPATH_ . '/templates/' . $path . '.php';
+        try {
+            if (!file_exists($filePath)) {
+                throw new \Exception("Fichier non introuvé" . $filePath);
+            } else {
+                extract($params);
+                require_once $filePath;
+            }
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+
+        //require_once _ROOTPATH_ . '/templates/page/about.php';
     }
 }
