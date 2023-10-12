@@ -30,6 +30,9 @@ class PageController extends Controller
             ]);
         }
     }
+    /*Exemple d'appel depuis l'url
+    ?controller=page&action=about
+    */
 
     protected function about()
     {
@@ -39,6 +42,9 @@ class PageController extends Controller
             'test2' => 'abc2', //tableau associatif en paramètre sans le définir
         ]);
     }
+    /*Exemple d'appel depuis l'url
+    ?controller=page&action=home
+    */
     protected function home()
     {
 

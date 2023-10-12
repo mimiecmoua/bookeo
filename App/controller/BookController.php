@@ -39,6 +39,9 @@ class BookController extends Controller
             ]);
         }
     }
+    /*Exemple d'appel depuis l'url
+    ?controller=book&action=show&id=1
+    */
 
     protected function show()
     {
@@ -49,7 +52,7 @@ class BookController extends Controller
                 $bookRepository = new BookRepository();
                 $book = $bookRepository->FindOneById($id);
                 $this->render('book/show', [
-                    'book' => '$book'
+                    'book' => $book
 
                 ]);
             } else {
